@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Entity
 public class Suculenta {
-
+    //MODIFICACION
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid",strategy = "uuid2")
