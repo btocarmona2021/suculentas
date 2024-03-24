@@ -18,12 +18,13 @@ public class Orden {
     @Temporal(TemporalType.DATE)
     private Date fechaOrden;
 
-    @OneToMany
+    @OneToMany(mappedBy = "listaSuculenta",cascade = CascadeType.ALL)
     private List<Suculenta> listaSuculentas;
     @OneToOne
     private Usuario usuario;
 
     @OneToOne
     private Proveedor proveedor;
-    private  Double precioFinal;
+    private Double precioFinal;
+    private Boolean estado;
 }

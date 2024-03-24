@@ -1,10 +1,10 @@
 package com.rac.suculentas.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -19,6 +19,6 @@ public class Proveedor {
     private String telefono;
     private String direccion;
     private String sitioWeb;
-    private  Suculenta suculenta;
-
+    @OneToMany(mappedBy = "listaOrdenes",cascade = CascadeType.ALL)
+    private List<Orden> orden;
 }

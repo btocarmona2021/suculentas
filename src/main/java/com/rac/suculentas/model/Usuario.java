@@ -16,6 +16,7 @@ public class Usuario {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String nombreCompleto;
+    @OneToOne
     private Imagen imagen;
     private String direccion;
     private String correo;

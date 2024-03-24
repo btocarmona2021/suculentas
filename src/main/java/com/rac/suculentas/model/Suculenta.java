@@ -18,10 +18,11 @@ public class Suculenta {
     private String descripcion;
     private Double precio;
     private Integer stock;
-//
-//    @ManyToOne
-//    private Categoria categoria;
-    /*private Imagen imagen;*/
+
+    @ManyToOne
+    private Categoria categoria;
+    @OneToOne
+    private Imagen imagen;
     private Double tamanio;
     private String cuidados;
     private String floracion;
