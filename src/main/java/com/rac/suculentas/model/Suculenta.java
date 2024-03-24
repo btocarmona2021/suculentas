@@ -16,7 +16,7 @@ public class Suculenta {
     private String descripcion;
     private Double precio;
     private Integer stock;
-    private Categoria categoria;
+//    private Categoria categoria;
     private Double tamanio;
     private String cuidados;
     private String floracion;
@@ -24,5 +24,5 @@ public class Suculenta {
     private Boolean disponibilidad;
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    private Comentario comentario;
+//    private Comentario comentario;
 }
