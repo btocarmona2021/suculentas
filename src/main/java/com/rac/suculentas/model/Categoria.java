@@ -12,7 +12,7 @@ public class Categoria {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private String idCategoria;
     private String nombreCategoria;
     private Boolean estado;
 

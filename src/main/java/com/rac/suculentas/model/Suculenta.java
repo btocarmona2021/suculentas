@@ -13,7 +13,7 @@ public class Suculenta {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid",strategy = "uuid2")
-    private String id;
+    private String idSuculenta;
     private String nombre;
     private String descripcion;
     private Double precio;
