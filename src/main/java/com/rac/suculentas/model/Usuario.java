@@ -14,8 +14,10 @@ public class Usuario {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    private String id;
+    private String idUsuario;
     private String nombreCompleto;
+    @OneToOne
+    private Imagen imagen;
     private String direccion;
     private String correo;
     private String password;
