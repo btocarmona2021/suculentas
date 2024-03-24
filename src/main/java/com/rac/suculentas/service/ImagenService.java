@@ -18,9 +18,9 @@ public class ImagenService {
 
     @Transactional
     public void crearImagen(Imagen imagen){imagenRepository.save(imagen); }
-    @Transactional(readOnly=true)
+    @Transactional
     public  Imagen buscarImagen(Imagen imagen) throws MyExceptions{
-        Optional<Imagen>consulta =ImagenRepository.findby(imagen.getNombreImagen());
+        Optional<Imagen>consulta =ImagenRepository.FindbyId(imagen.setIdImagen());
         if (imagen.isPresent()){
             return consulta.get();
         }else {
@@ -33,9 +33,6 @@ public void desactivarImagen(Imagen imagen){
     Imagen imagenEncontrada=imagenRepository.getOne(imagen.getIdImagen());
     imagenEncontrada.setEstado(false);
     imagenRepository.save(imagenEncontrada);
-
-
-
 
 }
 @Transactional
