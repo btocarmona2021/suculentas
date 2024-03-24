@@ -1,9 +1,9 @@
 package com.rac.suculentas.repository;
 
-import com.rac.suculentas.model.Proveedor;
+import com.rac.suculentas.model.Suculenta;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProveedorRepositorio extends JpaRepository<Proveedor,String> {
+public interface SuculentaRepository extends JpaRepository<Suculenta,String> {
 }
