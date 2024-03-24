@@ -21,4 +21,5 @@ public class Proveedor {
     private String sitioWeb;
     @OneToMany(mappedBy = "listaOrdenes",cascade = CascadeType.ALL)
     private List<Orden> orden;
+    private Boolean estado;
 }

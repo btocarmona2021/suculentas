@@ -32,4 +32,5 @@ public class Suculenta {
     private Date fechaAlta;
     @ManyToOne
     private Comentario comentario;
+    private Boolean estado;
 }
