@@ -1,13 +1,15 @@
 package com.rac.suculentas.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
 
 @Entity
+@Data
 public class Suculenta {
-    //MODIFICACION
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid",strategy = "uuid2")
@@ -16,7 +18,10 @@ public class Suculenta {
     private String descripcion;
     private Double precio;
     private Integer stock;
-    private Categoria categoria;
+//
+//    @ManyToOne
+//    private Categoria categoria;
+    /*private Imagen imagen;*/
     private Double tamanio;
     private String cuidados;
     private String floracion;
@@ -24,5 +29,6 @@ public class Suculenta {
     private Boolean disponibilidad;
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
+    @ManyToOne
     private Comentario comentario;
 }
