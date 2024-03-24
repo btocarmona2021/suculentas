@@ -18,8 +18,9 @@ public class Orden {
     @Temporal(TemporalType.DATE)
     private Date fechaOrden;
 
-    @OneToMany(mappedBy = "listaSuculenta",cascade = CascadeType.ALL)
+    @OneToMany
     private List<Suculenta> listaSuculentas;
+
     @OneToOne
     private Usuario usuario;
 

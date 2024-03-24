@@ -37,7 +37,7 @@ public class OrdenService {
 
     //DESACTIVAR ORDEN
     @Transactional
-    public void desactivarOrden(Orden orden){
+    public void desacttivarOrden(Orden orden){
         Orden ordenEncontrada = ordenRepository.getOne(orden.getIdOrden());
         ordenEncontrada.setEstado(false);
         ordenRepository.save(ordenEncontrada);

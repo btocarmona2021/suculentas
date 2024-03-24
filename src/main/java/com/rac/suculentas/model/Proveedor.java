@@ -19,7 +19,7 @@ public class Proveedor {
     private String telefono;
     private String direccion;
     private String sitioWeb;
-    @OneToMany(mappedBy = "listaOrdenes",cascade = CascadeType.ALL)
+    @OneToMany
     private List<Orden> orden;
     private Boolean estado;
 }
