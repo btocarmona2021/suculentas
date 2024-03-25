@@ -52,6 +52,7 @@ public class OrdenService {
     }
 
     //LISTAR ORDENES
+    @Transactional(readOnly = true)
     public List<Orden> listarOrdenes(){
         return ordenRepository.findAll();
     }
