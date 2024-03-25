@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Suculenta</title>
+</head>
+<body>
+<!--CONTENEDOR GENERAL-->
+<div class="contenedor">
+    <!--BARRA LATERAL IZQUIERDA-->
+    <aside th:replace="/fragments/frag :: aside"></aside>
+    <!--CONTENEDOR FORMULARIO-->
+    <div class="formulario">
+        <!--FORMULARIO-->
+        <form th:action="@{/suclenta/registrado}" method="post" th:object="${suculenta}" enctype="multipart/form-data">
+            <input type="hidden" name="idSuculenta" th:field="*{idSuculenta}">
+            <label for="nombreSuculenta">Nombre Suculenta</label>
+            <input type="text" name="de" id="nombreSuculenta" th:field="*{nombre}">
+            <label for="descripcion">Descripcion</label>
+            <input type="text" name="descripcion" id="descripcion" th:field="*{descripcion}">
+            <label for="precio">Precio</label>
+            <input type="number" name="precio" id="precio">
+            <label for="stock">Stock</label>
+            <input type="number" name="stock" id="stock" th:field="*{stock}">
+            <select name="categoria" id="categoria" th:field="*{categoria}">
+                <option value="Seleccione una categoría"></option>
+            </select>
+            <input type="file" name="imagen" id="imagen">
+            <label for="tamanio">Tamaño Planta</label>
+            <input type="number" name="tamanio" id="tamanio" th:field="*{tamanio}">
+            <label for="cuidados">Cuidados</label>
+            <textarea name="cuidados" id="cuidados" cols="30" rows="5" th:field="*{cuidados}"></textarea>
+            <label for="floracion">Floración</label>
+            <textarea name="floracion" id="floracion" cols="30" rows="5" th:field="*{floracion}"></textarea>
+            <label for="alturaMAx">Altura Máxima</label>
+            <input type="number" name="alturamax" id="alturamax" th:field="*{alturaMax}">
+            <label for="disponibilidad">Disponibilidad</label>
+            <input type="checkbox" name="dispo" id="disponibilidad" th:field="*{disponibilidad}">
+            <label for="comentario">Comentario</label>
+            <textarea name="comentario" id="comentario" cols="30" rows="5"></textarea>
+            <label for="estado">Estado</label>
+            <input type="checkbox" name="estado" id="estado">
+        </form>
+    </div>
+</div>
+</body>
+</html>

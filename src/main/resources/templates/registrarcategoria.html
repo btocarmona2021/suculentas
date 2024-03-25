@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Categoria</title>
+    <script defer src="/js/preview.js"></script>
+</head>
+<body>
+<!--CONTENEDOR GENERAL-->
+<div class="contenedor">
+    <!--BARRA LATERAL IZQUIERDA-->
+    <aside th:replace="/fragments/frag :: aside"></aside>
+    <!--CONTENEDOR FORMULARIO-->
+    <div class="formulario">
+        <!--FORMULARIO-->
+        <form th:action="@{/categoria/registrado}" method="post" th:object="${categoria}" enctype="multipart/form-data">
+            <input type="hidden" name="idCategoria" th:field="*{idCategoria}">
+            <label for="nombreCategoria">Categoría</label>
+            <input type="text" name="nombreCategoria" id="nombreCategoria" th:field="*{nombreCategoria}">
+            <label for="estado">Estado</label>
+            <input type="checkbox" name="estado" id="estado" th:field="*{estado}">
+            <label for="imageup">Imagen Categoría</label>
+            <input type="file" name="ImagenCategoria" id="imageup">
+            <input type="submit" value="Guardar">
+            <img src="#" alt="" id="vistaprevia">
+        </form>
+    </div>
+</div>
+</body>
+</html>

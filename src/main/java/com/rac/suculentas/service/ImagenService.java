@@ -6,7 +6,9 @@ import com.rac.suculentas.model.Imagen;
 import com.rac.suculentas.repository.ImagenRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,11 +20,26 @@ public class ImagenService {
     public ImagenService(ImagenRepository imagenRepository) {
         this.imagenRepository = imagenRepository;
     }
-   //CREAR IMAGEN
+
+    //CREAR IMAGEN
     @Transactional
-    public void crearImagen(Imagen imagen) {
-        imagenRepository.save(imagen);
+    public Imagen crearImagen(MultipartFile archivo) throws MyExceptions {
+        if (archivo != null) {
+            Imagen imagen = new Imagen();
+            try {
+                imagen.setNombre(archivo.getOriginalFilename());
+                imagen.setMime(archivo.getContentType());
+                imagen.setContenido(archivo.getBytes());
+                imagenRepository.save(imagen);
+                return imagen;
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }else{
+            throw new MyExceptions("No se encontró ninguna imagen , intente nuevamente");
+        }
     }
+
     //MODIFICAR IMAGEN
     @Transactional
     public Imagen buscarImagen(Imagen imagen) throws MyExceptions {
@@ -44,12 +61,13 @@ public class ImagenService {
     }
 
     //  ACTIVAR IMAGEN
-   @Transactional
+    @Transactional
     public void activarImagen(Imagen imagen) {
         Imagen imagenEncontrada = imagenRepository.getOne(imagen.getIdImagen());
         imagenEncontrada.setEstado(true);
         imagenRepository.save(imagenEncontrada);
     }
+
     //LISTAR IMAGENES
     @Transactional(readOnly = true)
     public List<Imagen> ListarImagen() {

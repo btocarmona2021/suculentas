@@ -14,7 +14,7 @@ public class Imagen {
     private String mime;
     private String nombre;
 
-    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     @Basic(fetch = FetchType.LAZY)
     private byte[] contenido;
     private Boolean estado;

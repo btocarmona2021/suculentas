@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Categorias</title>
+</head>
+<body>
+<!--CONTENEDOR GENERAL-->
+<div class="contenedor">
+    <!--BARRA LATERAL IZQUIERDA-->
+    <aside th:replace="/fragments/frag :: aside"></aside>
+    <!--CONTENEDOR TABLA-->
+    <div class="contenedor__tabla">
+        <!--TABLA-->
+        <table>
+            <thead>
+            <tr>
+                <th>Nombre Categoria</th>
+                <th>Estado</th>
+                <th>Edición</th>
+            </tr>
+            </thead>
+            <tbody th:each="categoria : ${listacategorias}">
+            <tr>
+                <td th:text="${categoria.nombreCategoria}"></td>
+                <td th:text="${categoria.estado} ? 'Activo':'Desactivado'"></td>
+                <td><a th:href="@{/categoria/editar/__${categoria.idCategoria}__}">Editar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
