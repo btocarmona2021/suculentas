@@ -5,6 +5,7 @@ import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -33,7 +34,8 @@ public class Suculenta {
     private Boolean disponibilidad;
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-    @ManyToOne
-    private Comentario comentario;
+
+    @OneToMany
+    private List<Comentario> comentario;
     private Boolean estado;
 }

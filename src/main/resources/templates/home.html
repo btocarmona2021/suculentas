@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Listar Suculentas</title>
+</head>
+<body>
+<!--CONTENEDOR GENERAL-->
+<div class="contenedor">
+    <!--BARRA LATERAL IZQUIERDA-->
+    <aside th:replace="/fragments/frag :: aside"></aside>
+    <!--CONTENEDOR TABLA-->
+    <div class="contenedor__listado">
+     <div th:each="suculenta : ${listaSuculentas}" class="card">
+         <div class="imagen">
+             <img src="" alt="">
+             <h4 th:text="${suculenta.precio}"></h4>
+         </div>
+         <h4 th:text="${suculenta.nombre}"></h4>
+         <p th:text="${suculenta.descripcion}"></p>
+     </div>
+    </div>
+</div>
+</body>
+</html>

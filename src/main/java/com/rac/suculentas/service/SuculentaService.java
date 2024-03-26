@@ -1,10 +1,12 @@
 package com.rac.suculentas.service;
 
 import com.rac.suculentas.exception.MyExceptions;
+import com.rac.suculentas.model.Imagen;
 import com.rac.suculentas.model.Suculenta;
 import com.rac.suculentas.repository.SuculentaRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,15 +15,22 @@ import java.util.Optional;
 public class SuculentaService {
     //CREAR INSTANCIA DE SUCULENTA REPOSITORIO
     private final SuculentaRepository suculentaRepository;
-
-    public SuculentaService(SuculentaRepository suculentaRepository) {
+    private final ImagenService imagenService;
+    public SuculentaService(SuculentaRepository suculentaRepository, ImagenService imagenService) {
         this.suculentaRepository = suculentaRepository;
+        this.imagenService = imagenService;
     }
 
     //CREAR SUCULENTA
     @Transactional
-    public void crearSuculenta(Suculenta suculenta) {
-        suculentaRepository.save(suculenta);
+    public void crearSuculenta(Suculenta suculenta, MultipartFile archivo) {
+        try {
+            Imagen imagen = imagenService.crearImagen(archivo);
+            suculenta.setImagen(imagen);
+            suculentaRepository.save(suculenta);
+        } catch (MyExceptions e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //MODIFICAR SUCULENTA
@@ -40,7 +49,7 @@ public class SuculentaService {
     public void desactivarSuculenta(Suculenta suculenta){
         Suculenta suculentaEncontrada = suculentaRepository.getOne(suculenta.getIdSuculenta());
         suculentaEncontrada.setEstado(false);
-        suculentaRepository.save(suculenta);
+        suculentaRepository.save(suculentaEncontrada);
     }
 
     //ACTIVAR SUCULENTA
@@ -48,7 +57,7 @@ public class SuculentaService {
     public void activarSuculenta(Suculenta suculenta){
         Suculenta suculentaEncontrada = suculentaRepository.getOne(suculenta.getIdSuculenta());
         suculentaEncontrada.setEstado(true);
-        suculentaRepository.save(suculenta);
+        suculentaRepository.save(suculentaEncontrada);
     }
 
     //LISTAR SUCULENTAS
