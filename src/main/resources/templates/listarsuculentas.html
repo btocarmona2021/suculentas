@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Listar Suculentas</title>
     <link rel="stylesheet" href="/css/listarSuculentas.css">
+    <script defer src="/js/popup.js"></script>
 </head>
 <body>
 <!--CONTENEDOR GENERAL-->
@@ -13,7 +14,7 @@
     <!--CONTENEDOR TABLA-->
     <div class="contenedor__listado">
          <!--TABLA-->
-         <table class="tabla">
+         <table class="tabla" id="tbody">
              <thead>
              <tr>
                  <th>Nombre</th>
@@ -32,14 +33,14 @@
                  <th>Editar</th>
              </tr>
              </thead>
-             <tbody th:each="suculenta : ${listaSuculentas}">
-             <tr>
+             <tbody th:each="suculenta : ${listaSuculentas}" >
+             <tr >
                  <td th:text="${suculenta.nombre}"></td>
                  <td th:text="${suculenta.descripcion}"></td>
                  <td th:text="${'$ '+suculenta.precio}"></td>
                  <td th:text="${suculenta.stock}"></td>
                  <td th:text="${suculenta.categoria.nombreCategoria}"></td>
-                 <td><img id="imagenSuculenta" th:src="@{/imagen/carga/__${suculenta.imagen.idImagen}__}" alt="Imagen de Suculenta" th:title="${suculenta.imagen.nombre}"></td>
+                 <td><img class="imagenSuculenta" th:src="@{/imagen/carga/__${suculenta.imagen.idImagen}__}" alt="Imagen de Suculenta" th:title="${suculenta.imagen.nombre}"></td>
                  <td th:text="${suculenta.tamanio + ' Cm'}"></td>
                  <td th:text="${suculenta.cuidados}"></td>
                  <td th:text="${suculenta.floracion}"></td>
@@ -54,5 +55,8 @@
      </div>
     </div>
 </div>
+
+
+
 </body>
 </html>

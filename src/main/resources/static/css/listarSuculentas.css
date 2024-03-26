@@ -8,12 +8,15 @@ body {
     font-family: "Indie Flower", cursive;
     background-color: #36b8d3;
 }
-#imagenSuculenta{
+.imagenSuculenta{
     width: 60px;
     height: 60px;
     padding: 4px;
     border-radius:10px;
     background-color: darkgreen;
+}
+.imagenSuculenta:hover{
+    cursor: pointer;
 }
 .tabla th ,td{
 
