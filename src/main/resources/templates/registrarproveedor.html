@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Registrar Proveedor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<!--CONTENEDOR GENERAL-->
+<div class="contenedor">
+    <!--BARRA LATERAL IZQUIERDA-->
+    <aside th:replace="/fragments/frag :: aside"></aside>
+    <!--CONTENEDOR FORMULARIO-->
+    <div class="formulario">
+        <!--FORMULARIO-->
+        <form th:action="@{/proveedor/registrado}" method="post" th:object="${proveedor}" enctype="multipart/form-data">
+            <input type="hidden" name="idProveedor" th:field="*{idProveedor}">
+            <label for="nombreProveedor">Nombre de Proveedor</label>
+            <input type="text" name="nombreProveedor" id="nombreProveedor" th:field="*{nombreEmpresa}">
+            <label for="nombreContacto">Contacto</label>
+            <input type="text" name="nombreContacto" id="nombreContacto" th:field="*{contacto}">
+            <label for="correo">Correo</label>
+            <input type="text" name="Correo" id="Correo" th:field="*{correo}">
+            <label for="telefono">Teléfono</label>
+            <input type="number" name="telefono" id="telefono" th:field="*{telefono}">
+            <label for="direccion">Direccion</label>
+            <input type="text" name="direccion" id="direccion" th:field="*{direccion}">
+            <label for="sitioweb">Sitio Web</label>
+            <input type="text" name="sitioweb" id="sitioweb" th:field="*{sitioWeb}">
+            <label for="estado">Estado</label>
+            <input type="checkbox" name="estado" id="estado" th:field="*{estado}">
+            <label for="imageup">Imagen Proveedor</label>
+            <input type="file" name="imagenProveedor" id="imageup">
+            <input type="submit" value="Guardar">
+            <img src="#" alt="" id="vistaprevia">
+        </form>
+    </div>
+</div>
+</body>
+</html>

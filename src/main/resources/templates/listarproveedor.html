@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Listar Categorias</title>
+    <title>Listar Proveedor</title>
 </head>
 <body>
 <!--CONTENEDOR GENERAL-->
@@ -22,7 +22,7 @@
                 <th>Desactivar</th>-->
             </tr>
             </thead>
-            <tbody th:each="categoria : ${listacategorias}">
+            <tbody th:each="categoria : ${lista}">
             <tr>
                 <td th:text="${categoria.nombreCategoria}"></td>
                 <td th:text="${categoria.estado} ? 'Activo':'Desactivado'"></td>
@@ -32,6 +32,5 @@
         </table>
     </div>
 </div>
-
 </body>
 </html>

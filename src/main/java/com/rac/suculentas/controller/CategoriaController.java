@@ -56,7 +56,13 @@ public class CategoriaController {
     @GetMapping("/activar/{idCategoria}")
     public String activar(Categoria categoria, ModelMap model){
         categoriaService.activarCategoria(categoria);
-        return "listarcategoria";
+        return "redirect:/categoria/listar";
+    }
+    //EDITAR CATEGORIA
+    @GetMapping("/desactivar/{idCategoria}")
+    public String desactivar(Categoria categoria, ModelMap model){
+        categoriaService.desactivarCategoria(categoria);
+        return "redirect:/categoria/listar";
     }
 
 

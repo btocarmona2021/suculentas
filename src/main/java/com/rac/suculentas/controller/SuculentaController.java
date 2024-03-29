@@ -44,7 +44,7 @@ public class SuculentaController {
     public String suculentaRegistrada(Suculenta suculenta, MultipartFile archivo, ModelMap model) throws MyExceptions {
         suculenta.setFechaAlta(new Date());
         suculentaService.crearSuculenta(suculenta, archivo);
-        return "registrarsuculenta";
+        return "redirect:/suculenta/listar";
     }
 
     @GetMapping("/listar")
@@ -59,10 +59,14 @@ public class SuculentaController {
     public String editarSuculenta(Suculenta suculenta,ModelMap model) throws MyExceptions {
         try {
             Suculenta suculentaEncontrada = suculentaService.buscarSuculenta(suculenta);
+            List<Categoria> listaCategoria = categoriaService.listarCategoria();
             model.put("suculenta",suculentaEncontrada);
+            model.put("listaCategoria", listaCategoria);
         } catch (MyExceptions e) {
             throw new MyExceptions("La suculenta no pudo ser encontrada, ocurrio un error");
         }
         return "registrarSuculenta";
     }
+
+
 }
